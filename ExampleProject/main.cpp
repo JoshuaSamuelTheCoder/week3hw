@@ -1,40 +1,82 @@
 #include <iostream>
 #include "Parser.h"
 using namespace std;
+#include <fstream>
 
-/**
-	Example Usage of Pointers. You Must Rewrite this method so that the pyramid is printed as such:
-      *
-     ***
-    *****
-   *******
-  *********
- ***********
-*************
 
-**/
-void pyramid(int levels, string* output){
-	for (int i = 0; i < levels; i++){
-		for (int j = i; j < levels; j++){
-			(*output)+="*";
-		}
-		(*output)+="\n";
-	}
+using namespace std;
+
+void pyramid(string* loc, int levels)
+{
+    std::string s = *loc;
+    s = ""; //no you can't do this, you gotta do it with for loops
+    //put code here (s+= "*") and etc, \n gives you a line break
+
+    for (int i = 1; i <= levels; i++)
+    {
+      for (int j = 0; j < i; j++)
+     {
+
+         s+="*";
+      }
+
+      s+="/n"
+
+     }
+    *loc = s;
+
 }
+int main ( int argc, char *argv[] )
+{
+  if (argc == 1)
+  {
+     // print an error and do nothing
+  }
+  else if (argc == 2)
+  {
+      // validate argv[1]  to be "-h"
+      if ((strcmp (argv[1], "-h")) == 0)
+      {
+      }
+      else
+      {
+      }
+  }
+  else if (argc == 3)
+  {
+      // validate argv[1]  to be "-h"
+      if ((strcmp (argv[1], "-h")) == 0)
+      {
+      }
+      else
+      {
+           break;
+      }
 
-int main(){
-	cout << "Enter in Amount of Levels: \n-->";
-	int levels;
-	cin >> levels;
-	string py = "";
-	string* pyLoc = &py;
-	pyramid(levels, pyLoc);
-	cout << "As Promised:\n\n" << *pyLoc << "\n\n";
-	
-	cout << "This next part must be done through cmdline args, this is just to prove that the classes i wrote work";
-	cout << endl << endl;
-	Parser p;
-	cout<<"Cat Command: " << p.getCommandRef("cat") << endl;
+      // validate argv[2]  to be one of the commands
+      if ((strcmp (argv[2], "nano")) == 0)
+      {
+         cout << "A terminal text editor (cannot run now)";
+      }
+      else if ((strcmp (argv[2], "ls")) == 0)
+      {
+         cout << "list file in a dir";
+      }
+      else if ((strcmp (argv[2], "cd")) == 0)
+      {
+         cout << "change current working directory";
+      }
 
-	return 0;
+      else
+      {
+           break;
+      }
+
+    string str = "";
+    string* strLoc = &str;
+    pyramid(strLoc, 3);
+    cout << str << endl;
+
+  }
+
 }
